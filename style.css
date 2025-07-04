@@ -1,6 +1,6 @@
-/* Portin Game Interface Styles */
+/* === PortGO GAME INTERFACE STYLES === */
 
-/* Background and general styling */
+/* ====== GLOBAL ====== */
 body {
     background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 50%, #9333EA 100%);
     min-height: 100vh;
@@ -9,26 +9,22 @@ body {
     overflow-x: hidden;
 }
 
-/* Background pattern icons */
+/* Background Icons */
 body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background-image: 
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="%23FFFFFF20">♠</text></svg>'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="%23FFFFFF20">♥</text></svg>'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="%23FFFFFF20">♦</text></svg>'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="%23FFFFFF20">♣</text></svg>'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="%23FFFFFF20">★</text></svg>'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="%23FFFFFF20">💡</text></svg>'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="%23FFFFFF20">⏳</text></svg>'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="%23FFFFFF20">🎮</text></svg>');
-    background-position: 
-        10% 20%, 80% 30%, 15% 70%, 85% 80%, 
-        25% 40%, 75% 60%, 40% 15%, 60% 85%;
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><text y="50" font-size="20" fill="%23FFFFFF20">♠</text></svg>'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><text y="50" font-size="20" fill="%23FFFFFF20">♥</text></svg>'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><text y="50" font-size="20" fill="%23FFFFFF20">♦</text></svg>'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><text y="50" font-size="20" fill="%23FFFFFF20">♣</text></svg>'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><text y="50" font-size="20" fill="%23FFFFFF20">★</text></svg>'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><text y="50" font-size="20" fill="%23FFFFFF20">💡</text></svg>'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><text y="50" font-size="20" fill="%23FFFFFF20">⏳</text></svg>'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><text y="50" font-size="20" fill="%23FFFFFF20">🎮</text></svg>');
+    background-position: 10% 20%, 80% 30%, 15% 70%, 85% 80%, 25% 40%, 75% 60%, 40% 15%, 60% 85%;
     background-repeat: no-repeat;
     background-size: 80px 80px;
     z-index: -1;
@@ -40,18 +36,26 @@ body::before {
     50% { transform: translateY(-10px); }
 }
 
-/* Main title styling */
-.portin-title {
-    color: #00FFFF !important;
-    text-shadow: 
-        2px 2px 0px #8B5CF6,
-        4px 4px 0px #7C3AED,
-        6px 6px 10px rgba(0,0,0,0.3);
+/* ====== TYPOGRAPHY ====== */
+.PortGO-title, .pixel-font {
     font-family: 'Courier New', monospace;
+    font-weight: bold;
     letter-spacing: 2px;
+    text-align: center;
+    animation: pulse 3s ease-in-out infinite;
 }
 
-/* Pixel-style buttons */
+.PortGO-title {
+    color: #00FFFF !important;
+    text-shadow: 2px 2px 0px #8B5CF6, 4px 4px 0px #7C3AED, 6px 6px 10px rgba(0,0,0,0.3);
+}
+
+.has-text-cyan {
+    color: #00FFFF !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ====== BUTTONS ====== */
 .pixel-button {
     background-image: url('path/to/your/button-image.png');
     background-size: cover;
@@ -64,126 +68,199 @@ body::before {
 .pixel-button:hover {
     background-color: #F3F4F6 !important;
     transform: translate(1px, 1px);
-    box-shadow: 
-        2px 2px 0px #9CA3AF,
-        4px 4px 0px #6B7280 !important;
+    box-shadow: 2px 2px 0px #9CA3AF, 4px 4px 0px #6B7280 !important;
 }
 
 .pixel-button:active {
     transform: translate(3px, 3px);
-    box-shadow: 
-        1px 1px 0px #9CA3AF,
-        2px 2px 0px #6B7280 !important;
+    box-shadow: 1px 1px 0px #9CA3AF, 2px 2px 0px #6B7280 !important;
 }
 
-/* Small pixel buttons */
 .pixel-button-small {
     background-color: #E5E7EB !important;
     color: #6B46C1 !important;
     border: 2px solid #D1D5DB !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.75rem;
     border-radius: 0 !important;
-    font-family: 'Courier New', monospace !important;
-    font-weight: bold !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    box-shadow: 
-        2px 2px 0px #9CA3AF,
-        4px 4px 0px #6B7280;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    box-shadow: 2px 2px 0px #9CA3AF, 4px 4px 0px #6B7280;
     transition: all 0.1s ease !important;
-    font-size: 0.75rem !important;
 }
 
 .pixel-button-small:hover {
     background-color: #F3F4F6 !important;
     transform: translate(1px, 1px);
-    box-shadow: 
-        1px 1px 0px #9CA3AF,
-        2px 2px 0px #6B7280 !important;
+    box-shadow: 1px 1px 0px #9CA3AF, 2px 2px 0px #6B7280 !important;
 }
 
-/* Input styling */
+/* ====== INPUT ====== */
 .input {
     background-color: rgba(255, 255, 255, 0.9) !important;
     border: 2px solid #D1D5DB !important;
     border-radius: 8px !important;
     color: #374151 !important;
-    font-family: 'Courier New', monospace !important;
+    font-family: 'Courier New', monospace;
 }
 
 .input:focus {
     border-color: #00FFFF !important;
-    box-shadow: 0 0 0 0.125em rgba(0, 255, 255, 0.25) !important;
+    box-shadow: 0 0 0 0.125em rgba(0, 255, 255, 0.25);
 }
 
-.input::placeholder {
-    color: #9CA3AF !important;
-    font-family: 'Courier New', monospace !important;
-}
-
-/* Subtitle styling */
-.has-text-cyan {
-    color: #00FFFF !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    font-family: 'Courier New', monospace !important;
-    letter-spacing: 1px;
-}
-
-/* Box styling for rules */
+/* ====== BOXES ====== */
 .box {
-    border: 3px solid #D1D5DB !important;
+    border: 3px solid #D1D5DB;
     border-radius: 0 !important;
-    box-shadow: 
-        3px 3px 0px #9CA3AF,
-        6px 6px 0px #6B7280;
-    background-color: rgba(229, 231, 235, 0.95) !important;
+    background-color: rgba(229, 231, 235, 0.95);
+    box-shadow: 3px 3px 0px #9CA3AF, 6px 6px 0px #6B7280;
 }
 
-/* Container adjustments */
+/* ====== GAME SCREENS ====== */
+#game-screen {
+    background-color: #9333EA;
+}
+
+#game-screen .box {
+    background-color: #E9D8FD !important;
+    border-radius: 20px;
+}
+
 .hero-body {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
 
-/* Screen visibility */
 .is-hidden {
     display: none !important;
 }
 
-/* Responsive design */
+/* ====== CARD DRAW ANIMATION ====== */
+.card-interaction {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 200px;
+    z-index: 1000;
+}
+
+.card-interaction .card-stack {
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card-interaction .card-stack:hover {
+    transform: scale(1.05) rotate(-3deg);
+}
+
+.drawn-card {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    width: 150px;
+    animation: draw-animation 2s ease forwards;
+    z-index: 2000;
+}
+
+.card-message {
+    position: absolute;
+    bottom: 240px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 1.5s;
+    z-index: 2000;
+}
+
+@keyframes draw-animation {
+    0% { transform: rotate(0deg) scale(0.5); opacity: 0; }
+    50% { transform: rotate(180deg) scale(1.2); opacity: 1; }
+    100% { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.shake-screen {
+    animation: screen-shake 0.5s;
+}
+
+@keyframes screen-shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(5px, -5px); }
+    50% { transform: translate(-5px, 5px); }
+    75% { transform: translate(5px, 5px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* ====== VICTORY / DEFEAT SCREENS ====== */
+.has-victory-background {
+    background-color: #B76CFD;
+    background-image: url('../img/confetti.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.has-defeat-background {
+    background: linear-gradient(to bottom, #3C1361, #6A1B9A);
+}
+
+/* ====== ROULETTE ====== */
+.roulette-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+}
+
+.roulette-wheel {
+    width: 100%;
+    height: auto;
+    transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+    transform: rotate(0deg);
+}
+
+/* ====== RANKING ====== */
+#ranking-podium p,
+#ranking-table th,
+#ranking-table td {
+    font-family: 'Courier New', monospace;
+    text-align: center;
+}
+
+#ranking-table td {
+    color: #4B0082;
+}
+
+/* ====== RESPONSIVE ====== */
 @media screen and (max-width: 768px) {
-    .portin-title {
+    .PortGO-title {
         font-size: 2.5rem !important;
     }
-    
+
     .pixel-button {
         font-size: 0.9rem !important;
     }
-    
-    .column.is-one-third {
-        padding: 1rem;
-    }
-    
+
+    .column.is-one-third,
     .column.is-two-thirds {
         padding: 1rem;
     }
 }
 
-/* Additional animations */
+/* ====== EFFECTS ====== */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
-
-.portin-title {
-    animation: pulse 3s ease-in-out infinite;
-}
-
-.pixel-image-button { 
-    background: linear-gradient(145deg, #F3F4F6, #E5E7EB);
-    border: 3px solid #D1D5DB; 
-    box-shadow: inset -3px -3px 0px #D1D5DB, inset 3px 3px 0px #FFFFFF, 3px 3px 0px #9CA3AF;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-} 

@@ -1,4 +1,4 @@
-// Portin Game Interface JavaScript
+// PortGO Game Interface JavaScript
 
 // Screen management
 const screens = {
@@ -6,7 +6,12 @@ const screens = {
     register: document.getElementById('register-screen'),
     mainMenu: document.getElementById('main-menu-screen'),
     rules: document.getElementById('rules-screen'),
-    gameOptions: document.getElementById('game-options-screen')
+    gameOptions: document.getElementById('game-options-screen'),
+    game: document.getElementById('game-screen'),
+    victory: document.getElementById('victory-screen'),
+    defeat: document.getElementById('defeat-screen'),
+    roulette: document.getElementById('roulette-screen'),
+    ranking: document.getElementById('ranking-screen')
 };
 
 // Hide all screens
@@ -46,11 +51,31 @@ function showRules() {
 }
 
 function showCredits() {
-    alert('Créditos:\n\nPortin - Jogo de Perguntas\nDesenvolvido com Bulma CSS\n\nObrigado por jogar!');
+    alert('Créditos:\n\nPortGO - Jogo de Perguntas\nDesenvolvido com Bulma CSS\n\nObrigado por jogar!');
 }
 
 function startGame() {
     showScreen('gameOptions');
+}
+
+function showGameScreen() {
+    showScreen('game');
+}
+
+function showVictoryScreen() {
+    showScreen('victory');
+}
+
+function showDefeatScreen() {
+    showScreen('defeat');
+}
+
+function showRouletteScreen() {
+    showScreen('roulette');
+}
+
+function showRanking() {
+    showScreen('ranking');
 }
 
 // Form handling
@@ -133,15 +158,12 @@ function isValidEmail(email) {
 
 // CPF validation (basic format check)
 function isValidCPF(cpf) {
-    // Remove dots and dashes
     cpf = cpf.replace(/[^\d]/g, '');
     
-    // Check if has 11 digits
     if (cpf.length !== 11) {
         return false;
     }
     
-    // Check if all digits are the same
     if (/^(\d)\1+$/.test(cpf)) {
         return false;
     }
@@ -152,13 +174,10 @@ function isValidCPF(cpf) {
 // Registration process
 function register() {
     if (validateRegistration()) {
-        // Simulate registration process
         const name = document.getElementById('reg-name').value.trim();
         
-        // Show success message
         alert(`Cadastro realizado com sucesso!\nBem-vindo(a), ${name}!`);
         
-        // Redirect to main menu
         showMainMenu();
     }
 }
@@ -169,7 +188,6 @@ function addButtonEffects() {
     
     buttons.forEach(button => {
         button.addEventListener('click', function() {
-            // Add click sound effect (if needed)
             playClickSound();
         });
     });
@@ -177,15 +195,12 @@ function addButtonEffects() {
 
 // Sound effect placeholder
 function playClickSound() {
-    // Placeholder for click sound effect
-    // You can implement actual sound here if needed
     console.log('Click sound played');
 }
 
 // Keyboard navigation
 function setupKeyboardNavigation() {
     document.addEventListener('keydown', function(event) {
-        // Enter key to login
         if (event.key === 'Enter') {
             const currentScreen = getCurrentScreen();
             
@@ -198,7 +213,6 @@ function setupKeyboardNavigation() {
             }
         }
         
-        // Escape key to go back
         if (event.key === 'Escape') {
             const currentScreen = getCurrentScreen();
             
@@ -256,14 +270,10 @@ function formatPhone(input) {
 
 // Initialize the application
 function init() {
-    // Show login screen by default
     showLogin();
-    
-    // Setup event listeners
     addButtonEffects();
     setupKeyboardNavigation();
     
-    // Add formatting to CPF field
     const cpfField = document.getElementById('reg-cpf');
     if (cpfField) {
         cpfField.addEventListener('input', function() {
@@ -271,7 +281,6 @@ function init() {
         });
     }
     
-    // Add formatting to phone field
     const phoneField = document.getElementById('reg-phone');
     if (phoneField) {
         phoneField.addEventListener('input', function() {
@@ -279,7 +288,6 @@ function init() {
         });
     }
     
-    // Auto-focus when screen changes
     const observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
@@ -288,26 +296,125 @@ function init() {
         });
     });
     
-    // Observe all screens for class changes
     Object.values(screens).forEach(screen => {
         if (screen) {
             observer.observe(screen, { attributes: true });
         }
     });
     
-    console.log('Portin Game Interface initialized successfully!');
+    console.log('PortGO Game Interface initialized successfully!');
 }
 
-// Start the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
 
-// Handle window resize
 window.addEventListener('resize', function() {
-    // Adjust layout if needed
     console.log('Window resized');
 });
 
-// Prevent form submission on Enter (handled by custom logic)
 document.addEventListener('submit', function(event) {
     event.preventDefault();
 });
+
+function toggleTable() {
+    const table = document.getElementById('ranking-table');
+    table.classList.toggle('is-hidden');
+}
+
+function setRankingView(type) {
+    document.getElementById('btn-aluno').classList.remove('is-active');
+    document.getElementById('btn-escola').classList.remove('is-active');
+    document.getElementById(`btn-${type}`).classList.add('is-active');
+}
+
+function showVictoryScreen() {
+    showScreen('victory');
+}
+
+function showDefeatScreen() {
+    showScreen('defeat');
+}
+
+function nextQuestion() {
+    hideAllScreens();
+    showRouletteScreen();
+}
+
+const respostaButtons = document.querySelectorAll('.resposta-button');
+
+respostaButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        const isCorrect = this.dataset.correct === "true";
+        if (isCorrect) {
+            showVictoryScreen();
+        } else {
+            showDefeatScreen();
+        }
+    });
+});
+
+let currentRotation = 0;
+
+function spinRoulette() {
+    const segments = [
+        { label: 'FÁCIL', angle: 45, action: () => startQuestion('facil') },
+        { label: 'MÉDIO', angle: 90, action: () => startQuestion('medio') },
+        { label: 'DIFÍCIL', angle: 135, action: () => startQuestion('dificil') },
+        { label: 'DIFÍCIL', angle: 180, action: () => startQuestion('dificil') },
+        { label: 'DIFÍCIL', angle: 225, action: () => startQuestion('dificil') },
+        { label: 'DIFÍCIL', angle: 270, action: () => startQuestion('dificil') },
+        { label: 'FÁCIL', angle: 315, action: () => startQuestion('facil') },
+        { label: 'FÁCIL', angle: 360, action: () => startQuestion('facil') },
+    ];
+
+    const index = Math.floor(Math.random() * segments.length);
+    const segment = segments[index];
+    
+    const extraSpins = 3 * 360;
+    currentRotation += extraSpins + segment.angle;
+
+    const roulette = document.getElementById('roulette-image');
+    roulette.style.transform = `rotate(${currentRotation}deg)`;
+
+    setTimeout(() => {
+        console.log(`Segmento sorteado: ${segment.label}`);
+        segment.action();
+    }, 4000);
+}
+
+function startQuestion(dificuldade) {
+    console.log("Iniciar pergunta com dificuldade:", dificuldade);
+    showGameScreen();
+}
+
+function drawCard() {
+    const gameScreen = document.getElementById('game-screen');
+    const drawnCard = document.getElementById('drawn-card');
+    const message = document.getElementById('card-message');
+
+    const outcomes = [
+        { text: "CARTA BOA", color: "#00FFFF", image: "img/card-good.png" },
+        { text: "CARTA RUIM", color: "#FF3B3B", image: "img/card-bad.png" },
+        { text: "CARTA BOA", color: "#00FFFF", image: "img/card-good.png" }
+    ];
+
+    const result = outcomes[Math.floor(Math.random() * outcomes.length)];
+
+    // Atualiza texto e estilo da mensagem
+    message.innerText = result.text;
+    message.style.backgroundColor = result.color;
+
+    // Atualiza imagem da carta sorteada
+    drawnCard.src = result.image;
+
+    // Mostra elementos e aplica animação
+    drawnCard.classList.remove('is-hidden');
+    message.classList.remove('is-hidden');
+    gameScreen.classList.add('shake-screen');
+
+    // Esconde após 3 segundos
+    setTimeout(() => {
+        gameScreen.classList.remove('shake-screen');
+        drawnCard.classList.add('is-hidden');
+        message.classList.add('is-hidden');
+    }, 3000);
+}

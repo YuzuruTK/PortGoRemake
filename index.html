@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portin - Jogo de Perguntas</title>
+    <title>PortGO - Jogo de Perguntas</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,7 +15,7 @@
                 <div class="columns is-centered">
                     <div class="column is-one-third">
                         <div class="has-text-centered mb-6">
-                            <img class="title is-1 has-text-weight-bold portin-title" src="AAAAAAAAA">AAAA</img>
+                            <img src="img/title.png" alt="PortGO" class="portgo-logo">
                         </div>
                         
                         <div class="field">
@@ -60,7 +60,7 @@
                 <div class="columns is-centered">
                     <div class="column is-two-thirds">
                         <div class="has-text-centered mb-6">
-                            <h1 class="title is-1 has-text-weight-bold portin-title">Portin</h1>
+                            <img src="img/title.png" alt="PortGO" class="portgo-logo">
                             <h2 class="subtitle is-4 has-text-cyan">CADASTRO DE USUÁRIO</h2>
                         </div>
                         
@@ -133,7 +133,7 @@
                 <div class="columns is-centered">
                     <div class="column is-one-third">
                         <div class="has-text-centered mb-6">
-                            <h1 class="title is-1 has-text-weight-bold portin-title">Portin</h1>
+                            <img src="img/title.png" alt="PortGO" class="portgo-logo">
                         </div>
                         
                         <div class="field">
@@ -189,8 +189,63 @@
                         <div class="box has-background-light">
                             <div class="content">
                                 <p class="has-text-dark">
-                                    Bem-vindo(a) ao nosso jogo de perguntas, cartas e decisões! Aqui, sorte, 
-                                    estratégia e conhecimento caminham juntos.
+<h2>VIDAS</h2>
+Todos começam com 3 vidas.
+A cada erro, você perde 1 vida, salvo se uma carta te proteger.
+Perdeu todas as vidas? Fim de jogo!
+
+<H2>MOEDAS INICIAIS:</H2>
+Você começa com 15 moedas.
+
+<h2>COMO GANHAR:</h2>
+A cada pergunta certa, você ganha moedas:
+Fácil: +2 moedas
+Médio: +4 moedas
+Difícil: +6 moedas
+
+<h2>COMO USAR:</h2>
+
+Pegar carta extra; 5 moedas
+Remover uma carta ruim; 6 moedas
+
+<h2>Ação/Custo</h2>
+
+Pegar carta extra; 5 moedas
+Remover uma carta ruim; 6 moedas
+Girar a roleta novamente; 4 moedas
+Use com sabedoria! 
+
+<h2>CARTAS DO JOGO</h2>
+<h3>CARTAS BOAS (ganhas quando acerta):</h3>
++1 vida extra
+Ver todas as cartas da rodada seguinte (antes de escolher)
+Remover alternativas erradas da próxima pergunta
+Dica real e contextualizada sobre o tema
+Remover uma carta ruim acumulada
+
+<h3>CARTAS RUINS (ganhas quando erra):</h3>
+Dica falsa (confunde em vez de ajudar)
+Resposta da pergunta em inglês
+Um elemento visual bloqueia parte da tela temporariamente, se não responder a tempo, perde a vez
+Todas as alternativas aparecem com os verbos no infinitivo
+As cartas se acumulam e você não sabe qual vai pegar – elas estão embaralhadas e de face para baixo. Fique esperto!
+
+<h2>DICAS DE ESTRATÉGIA</h2>
+Use o giro extra da roleta em momentos cruciais.
+Acumule moedas para o fim da partida: elas salvam vidas (literalmente)
+Cartas boas podem virar o jogo, mas não subestime as ruins!
+Pense rápido nas perguntas – elementos surpresa podem atrapalhar
+
+<h2>FIM DE JOGO</h2>
+O jogo termina quando:
+Você perde todas as 3 vidas.
+
+A pontuação final será baseada em:
+Quantidade de vidas restantes;
+Número de acertos;
+Uso estratégico das cartas.
+
+Boa Sorte, Tenha um Bom Jogo!
                                 </p>
                             </div>
                         </div>
@@ -213,12 +268,12 @@
                 <div class="columns is-centered">
                     <div class="column is-one-third">
                         <div class="has-text-centered mb-6">
-                            <h1 class="title is-1 has-text-weight-bold portin-title">Portin</h1>
+                            <img src="img/title.png" alt="PortGO" class="portgo-logo">
                         </div>
                         
                         <div class="field">
                             <div class="control">
-                                <button class="button is-light is-large is-fullwidth pixel-button mb-3" onclick="alert('Novo jogo iniciado!')">
+                                <button class="button is-light is-large is-fullwidth pixel-button mb-3" onclick="showGameScreen()">
                                     NOVO JOGO
                                 </button>
                             </div>
@@ -226,19 +281,12 @@
                         
                         <div class="field">
                             <div class="control">
-                                <button class="button is-light is-large is-fullwidth pixel-button mb-3" onclick="alert('Ranking A')">
+                                <button class="button is-light is-large is-fullwidth pixel-button mb-3" onclick="showRanking()">
                                     RANKING A.
                                 </button>
                             </div>
                         </div>
                         
-                        <div class="field">
-                            <div class="control">
-                                <button class="button is-light is-large is-fullwidth pixel-button mb-3" onclick="alert('Ranking E')">
-                                    RANKING E.
-                                </button>
-                            </div>
-                        </div>
                         
                         <div class="has-text-centered mt-4">
                             <button class="button is-small is-light pixel-button-small mr-3" onclick="showMainMenu()">
@@ -253,6 +301,177 @@
             </div>
         </div>
     </section>
+
+<!-- Ranking Screen -->
+<section id="ranking-screen" class="hero is-fullheight is-hidden has-background-purple">
+    <div class="hero-head has-background-dark px-3 py-2 is-flex is-justify-content-space-between is-align-items-center" style="min-height: 50px;">
+        <img src="img/title.png" alt="PortGO" style="height: 30px; width: auto;">
+        <div>
+            <button id="btn-aluno" class="button pixel-button-small is-small mx-2 is-active" onclick="setRankingView('aluno')">ALUNO</button>
+            <button id="btn-escola" class="button pixel-button-small is-small mx-2" onclick="setRankingView('escola')">ESCOLA</button>
+        </div>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <!-- Visual Ranking (Troféus) -->
+            <div id="ranking-podium" class="is-flex is-justify-content-center is-align-items-end mb-6" style="gap: 4rem;">
+                <div>
+                    <p class="has-text-white mb-2">ESCOLA B<br>10000 PONTOS</p>
+                    <img src="img/silver-trophy.png" style="width: 64px;">
+                </div>
+                <div>
+                    <p class="has-text-white mb-2">ESCOLA A<br>20000 PONTOS</p>
+                    <img src="img/gold-trophy.png" style="width: 80px;">
+                </div>
+                <div>
+                    <p class="has-text-white mb-2">ESCOLA C<br>500 PONTOS</p>
+                    <img src="img/bronze-trophy.png" style="width: 64px;">
+                </div>
+            </div>
+
+            <!-- Botão para mostrar tabela -->
+            <button class="button pixel-button-small is-small mb-5" onclick="toggleTable()">TABELA</button>
+
+            <!-- Ranking Table -->
+            <div id="ranking-table" class="table-container is-hidden">
+                <table class="table is-fullwidth has-background-light">
+                    <thead>
+                        <tr>
+                            <th>ALUNO/ESCOLA</th>
+                            <th>PONTUAÇÃO</th>
+                            <th>COLOCAÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Escola A</td><td>20000</td><td>1º</td></tr>
+                        <tr><td>Escola B</td><td>10000</td><td>2º</td></tr>
+                        <tr><td>Escola C</td><td>500</td><td>3º</td></tr>
+                        <!-- + linhas dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Victory Screen -->
+<section id="victory-screen" class="hero is-fullheight is-hidden has-victory-background">
+    <div class="hero-body is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+        <h1 class="title is-2 has-text-succes pixel-font">PARABÉNS VOCÊ GANHOU!</h1>
+        <h2 class="subtitle is-3 has-text-white pixel-font">UMA CARTA BOA</h2>
+        <img src="img/card-good.png" alt="Medalha" style="width: 96px; margin: 1.5rem 0;">
+        <div class="buttons">
+            <button class="button pixel-button-small mx-2" onclick="nextQuestion()">PRÓXIMO</button>
+            <button class="button pixel-button-small mx-2" onclick="showMainMenu()">SAIR</button>
+        </div>
+    </div>
+</section>
+
+<!-- Roleta de Dificuldade -->
+<section id="roulette-screen" class="hero is-fullheight is-hidden has-background-purple">
+    <div class="hero-head has-background-dark px-3 py-2 is-flex is-justify-content-space-between is-align-items-center" style="min-height: 50px;">
+        <img src="img/title.png" alt="PortGO" style="height: 30px; width: auto;">
+        <div>
+            <span class="mx-2 has-text-warning is-size-7">★ <span id="score">0</span></span>
+            <span class="mx-2 has-text-danger is-size-7">❤️❤️❤️</span>
+            <span class="mx-2 has-text-info is-size-7">🪙 x <span id="coins">15</span></span>
+        </div>
+    </div>
+
+    <div class="hero-body is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+        <div class="roulette-container">
+            <img id="roulette-image" src="img/24.png" alt="Roleta" class="roulette-wheel">
+        </div>
+        <button class="button pixel-button-small mt-5" onclick="spinRoulette()">GIRAR NOVAMENTE</button>
+    </div>
+</section>
+
+<!-- Defeat Screen -->
+<section id="defeat-screen" class="hero is-fullheight is-hidden has-defeat-background">
+    <div class="hero-body is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+        <h1 class="title is-2 has-text-white pixel-font">QUE PENA, VOCÊ PERDEU!</h1>
+        <h2 class="subtitle is-3 has-text-white pixel-font">UMA CARTA RUIM</h2>
+        <img src="img/card-bad.png" alt="Carta Ruim" style="width: 96px; margin: 1.5rem 0;">
+        <div class="buttons">
+            <button class="button pixel-button-small mx-2" onclick="nextQuestion()">PRÓXIMO</button>
+            <button class="button pixel-button-small mx-2" onclick="showMainMenu()">SAIR</button>
+        </div>
+    </div>
+</section>
+
+    <!-- Game Screen -->
+<section id="game-screen" class="hero is-fullheight is-hidden">
+    <div class="hero-head has-background-dark px-3 py-2 is-flex is-justify-content-space-between is-align-items-center" style="opacity: 0.75; min-height: 50px;">
+        <div class="has-text-left">
+            <img src="img/title.png" alt="PortGO" style="height: 30px; width: auto;">
+        </div>
+        <div class="has-text-right">
+            <span class="mx-2 has-text-warning is-size-7">★ <span id="score">0</span></span>
+            <span class="mx-2 has-text-danger is-size-7">❤️❤️❤️</span>
+            <span class="mx-2 has-text-info is-size-7">🪙 x <span id="coins">15</span></span>
+        </div>
+    </div>
+    
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <!-- Pergunta -->
+                <div class="column is-half">
+                    <div class="box p-5" style="height: 600px; overflow-y: auto;">
+                      <p id="question-text" class="has-text-dark is-size-5 has-text-weight-bold">
+A Língua da Tabatinga, falada na cidade de
+Bom Despacho, Minas Gerais, foi por muito tempo
+estigmatizada devido à sua origem e à própria classe social de
+seus falantes, pois, segundo uma pesquisadora, era falada por
+“meninos pobres vindos da Tabatinga ou de Cruz de Monte —
+ruas da periferia da cidade cujos habitantes sempre
+foram tidos por marginais”. Conhecida por antigos como a
+“língua dos engraxates”, pois muitos trabalhadores desse
+ofício conversavam nessa língua enquanto lustravam
+sapatos na praça da matriz, a Língua da Tabatinga era
+utilizada por negros escravizados como uma espécie de
+“língua secreta”, um código para trocarem informações de
+como conseguir alimentos, ou para planejar fugas de seus
+senhores sem risco de serem descobertos por eles.
+De acordo com um documento do Iphan (2011),
+os falantes da língua apresentam uma forte consciência de
+sua relação com a descendência africana e da importância
+de preservar a “fala que os identifica na região”. Essa
+mudança de compreensão tangencia aspectos de
+pertencimento, pois, à medida que o falante da Língua
+da Tabatinga se identifica com a origem afro-brasileira,
+ele passa a ver essa língua como um legado recebido
+e tem o cuidado de transmiti-la para outras gerações.
+A concentração de falantes dessa língua está na faixa
+entre 21 e 60 anos de idade.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="card-interaction">
+                        <img src="img/25.png" alt="Monte de cartas" class="card-stack" onclick="drawCard()">
+                        <img id="drawn-card" src="img/card.png" alt="Carta sorteada" class="drawn-card is-hidden">
+                        <div id="card-message" class="card-message is-hidden">CARTA BOA</div>
+                    </div>
+                </div>
+                <!-- Respostas -->
+                <div class="column is-half">
+                    <div class="box p-4" style="height: 600px; overflow-y: auto;">
+                        <div class="buttons is-flex is-flex-direction-column">
+                            <button class="button is-light  pixel-button mb-2 resposta-button" data-correct="false">A seu registro passou da forma oral para a escrita.</button>
+                            <button class="button is-light  pixel-button mb-2 resposta-button" data-correct="false">B classe social de seus usuários ganhou prestígio.</button>
+                            <button class="button is-light  pixel-button mb-2 resposta-button" data-correct="false">C sua função inicial se manteve ao longo dos anos.</button>
+                            <button class="button is-light  pixel-button mb-2 resposta-button" data-correct="true">D sentimento de identidade linguística tem se consolidado.</button>
+                            <button class="button is-light  pixel-button mb-2 resposta-button" data-correct="true">E perfil etário de seus falantes tem se tornado homogêneo.</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
 
     <script src="script.js"></script>
 </body>
