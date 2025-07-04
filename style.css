@@ -53,19 +53,12 @@ body::before {
 
 /* Pixel-style buttons */
 .pixel-button {
-    background-color: #E5E7EB !important;
-    color: #6B46C1 !important;
-    border: 3px solid #D1D5DB !important;
-    border-radius: 0 !important;
-    font-family: 'Courier New', monospace !important;
-    font-weight: bold !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    box-shadow: 
-        3px 3px 0px #9CA3AF,
-        6px 6px 0px #6B7280;
-    transition: all 0.1s ease !important;
-    position: relative;
+    background-image: url('path/to/your/button-image.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pixel-button:hover {
@@ -185,3 +178,12 @@ body::before {
 .portin-title {
     animation: pulse 3s ease-in-out infinite;
 }
+
+.pixel-image-button { 
+    background: linear-gradient(145deg, #F3F4F6, #E5E7EB);
+    border: 3px solid #D1D5DB; 
+    box-shadow: inset -3px -3px 0px #D1D5DB, inset 3px 3px 0px #FFFFFF, 3px 3px 0px #9CA3AF;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+} 
